@@ -1,0 +1,24 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 281
+  HorizontalOffset = 240
+  VerticalOffset = 170
+  Width = 560
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <>
+    Params = <>
+    Macros = <>
+    Left = 89
+    Top = 49
+  end
+  object SQLConnector1: TSQLConnector
+    Connected = False
+    LoginPrompt = False
+    AfterConnect = SQLConnector1AfterConnect
+    DatabaseName = 'myDB'
+    KeepConnection = False
+    ConnectorType = 'SQLite3'
+    Left = 133
+    Top = 118
+  end
+end

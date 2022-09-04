@@ -1,0 +1,35 @@
+object FormMain: TFormMain
+  Left = 470
+  Height = 434
+  Top = 377
+  Width = 909
+  Caption = 'FIESTA - FIEld Service Territory Assignment helper'
+  ClientHeight = 434
+  ClientWidth = 909
+  OnCreate = FormCreate
+  LCLVersion = '2.2.2.0'
+  object StatusBar1: TStatusBar
+    Left = 0
+    Height = 18
+    Top = 416
+    Width = 909
+    Panels = <>
+  end
+  object ToolBar1: TToolBar
+    Left = 0
+    Height = 26
+    Top = 0
+    Width = 909
+    Caption = 'ToolBar1'
+    TabOrder = 1
+    object ToolButton1: TToolButton
+      Left = 1
+      Top = 2
+      Caption = 'ToolButton1'
+    end
+  end
+  object ImageList1: TImageList
+    Left = 73
+    Top = 159
+  end
+end
