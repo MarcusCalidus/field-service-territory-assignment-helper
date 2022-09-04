@@ -28,6 +28,44 @@ object FormMain: TFormMain
       Caption = 'ToolButton1'
     end
   end
+  object PageControl1: TPageControl
+    Left = 255
+    Height = 372
+    Top = 26
+    Width = 654
+    Align = alClient
+    TabOrder = 2
+    OnChange = PageControl1Change
+  end
+  object StatusBar2: TStatusBar
+    Left = 0
+    Height = 18
+    Top = 398
+    Width = 909
+    Panels = <>
+  end
+  object Splitter1: TSplitter
+    Left = 250
+    Height = 372
+    Top = 26
+    Width = 5
+  end
+  object ListView1: TListView
+    Left = 0
+    Height = 372
+    Top = 26
+    Width = 250
+    Align = alLeft
+    Columns = <    
+      item
+        Caption = 'Number'
+      end>
+    Items.LazData = {
+      3A00000002000000FFFFFFFFFFFFFFFFFFFFFFFF00000000050000004974656D
+      30FFFFFFFFFFFFFFFFFFFFFFFF00000000050000004974656D31
+    }
+    TabOrder = 5
+  end
   object ImageList1: TImageList
     Left = 73
     Top = 159

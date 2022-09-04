@@ -40,18 +40,15 @@
         <Filename Value="unitmain.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormMain"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="unitMain"/>
-      </Unit>
-      <Unit>
-        <Filename Value="unitsettings.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="unitSettings"/>
       </Unit>
       <Unit>
         <Filename Value="unitdata.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="DataModule1"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="unitData"/>
       </Unit>
