@@ -12,10 +12,146 @@ object FormSettings: TFormSettings
     Height = 449
     Top = 0
     Width = 788
-    ActivePage = TabSheetTerritory
+    ActivePage = TabSheetUsers
     Align = alClient
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 0
+    object TabSheetUsers: TTabSheet
+      Caption = 'Users'
+      ClientHeight = 419
+      ClientWidth = 782
+      object PanelUserToolbar: TPanel
+        Left = 0
+        Height = 34
+        Top = 0
+        Width = 782
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 34
+        ClientWidth = 782
+        TabOrder = 0
+        object btnRefreshUsers: TBitBtn
+          Left = 0
+          Height = 30
+          Top = 2
+          Width = 104
+          Caption = 'Refresh'
+          Images = ImageList1
+          ImageIndex = 0
+          OnClick = btnRefreshCongregationsClick
+          TabOrder = 0
+        end
+        object btnAddUser: TBitBtn
+          Left = 104
+          Height = 30
+          Top = 2
+          Width = 104
+          Caption = 'New'
+          Images = ImageList1
+          ImageIndex = 1
+          OnClick = btnAddCongregationClick
+          TabOrder = 1
+        end
+        object btnDeleteUser: TBitBtn
+          Left = 208
+          Height = 30
+          Top = 2
+          Width = 104
+          Caption = 'Delete'
+          Enabled = False
+          Images = ImageList1
+          ImageIndex = 2
+          OnClick = btnDeleteCongregationClick
+          TabOrder = 2
+        end
+      end
+      object v: TListView
+        Left = 0
+        Height = 385
+        Top = 34
+        Width = 502
+        Align = alClient
+        Columns = <        
+          item
+            Caption = 'ID'
+          end        
+          item
+            AutoSize = True
+            Caption = 'Name'
+            Width = 100
+          end>
+        SortColumn = 1
+        SortType = stText
+        TabOrder = 1
+        OnEditing = ListViewCongregationsEditing
+        OnSelectItem = ListViewCongregationsSelectItem
+      end
+      object PanelCongregation1: TPanel
+        Left = 502
+        Height = 385
+        Top = 34
+        Width = 280
+        Align = alRight
+        BevelOuter = bvNone
+        Caption = 'PanelCo'
+        ClientHeight = 385
+        ClientWidth = 280
+        Enabled = False
+        TabOrder = 2
+        object ValueListEditorCongregation1: TValueListEditor
+          Left = 0
+          Height = 327
+          Top = 26
+          Width = 280
+          Align = alClient
+          FixedCols = 0
+          RowCount = 2
+          TabOrder = 0
+          TitleStyle = tsNative
+          TitleCaptions.Strings = (
+            'Field'
+            'Value'
+          )
+          ColWidths = (
+            64
+            214
+          )
+        end
+        object Panel4: TPanel
+          Left = 0
+          Height = 32
+          Top = 353
+          Width = 280
+          Align = alBottom
+          BevelOuter = bvNone
+          ClientHeight = 32
+          ClientWidth = 280
+          TabOrder = 1
+          object btnSaveCongregation1: TBitBtn
+            Left = 176
+            Height = 30
+            Top = 0
+            Width = 100
+            Anchors = [akTop, akRight]
+            Caption = 'Save'
+            Images = ImageList1
+            ImageIndex = 3
+            OnClick = btnSaveCongregationClick
+            TabOrder = 0
+          end
+        end
+        object PanelUserTitle1: TPanel
+          Left = 0
+          Height = 26
+          Top = 0
+          Width = 280
+          Align = alTop
+          BevelOuter = bvNone
+          Caption = 'No Congregation Selected'
+          TabOrder = 2
+        end
+      end
+    end
     object TabSheetCongregation: TTabSheet
       Caption = 'Congregations'
       ClientHeight = 419
@@ -228,6 +364,7 @@ object FormSettings: TFormSettings
           item
             AutoSize = True
             Caption = 'Description'
+            Width = 279
           end>
         SortColumn = 1
         SortType = stText

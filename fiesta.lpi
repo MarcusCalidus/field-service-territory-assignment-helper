@@ -60,6 +60,13 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="unitSettings"/>
       </Unit>
+      <Unit>
+        <Filename Value="src/unitlogin.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormLogin"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="unitLogin"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

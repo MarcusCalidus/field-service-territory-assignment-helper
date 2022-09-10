@@ -7,6 +7,7 @@ object FormMain: TFormMain
   ClientHeight = 434
   ClientWidth = 909
   OnCreate = FormCreate
+  OnShow = FormShow
   LCLVersion = '2.2.2.0'
   object StatusBar1: TStatusBar
     Left = 0
@@ -17,8 +18,8 @@ object FormMain: TFormMain
   end
   object PageControl1: TPageControl
     Left = 255
-    Height = 348
-    Top = 50
+    Height = 366
+    Top = 32
     Width = 654
     Align = alClient
     TabOrder = 1
@@ -33,14 +34,14 @@ object FormMain: TFormMain
   end
   object Splitter1: TSplitter
     Left = 250
-    Height = 348
-    Top = 50
+    Height = 366
+    Top = 32
     Width = 5
   end
   object ListView1: TListView
     Left = 0
-    Height = 348
-    Top = 50
+    Height = 366
+    Top = 32
     Width = 250
     Align = alLeft
     Columns = <    
@@ -55,20 +56,23 @@ object FormMain: TFormMain
   end
   object Panel1: TPanel
     Left = 0
-    Height = 50
+    Height = 32
     Top = 0
     Width = 909
     Align = alTop
-    Caption = 'Panel1'
-    ClientHeight = 50
+    BevelOuter = bvNone
+    ClientHeight = 32
     ClientWidth = 909
     TabOrder = 5
     object btnShowSettings: TBitBtn
-      Left = 16
+      Left = 808
       Height = 30
-      Top = 8
-      Width = 75
+      Top = 0
+      Width = 91
+      Anchors = [akTop, akRight]
       Caption = 'Settings'
+      Images = ImageList1
+      ImageIndex = 0
       OnClick = btnShowSettingsClick
       TabOrder = 0
     end
@@ -76,5 +80,17 @@ object FormMain: TFormMain
   object ImageList1: TImageList
     Left = 73
     Top = 159
+    Bitmap = {
+      4C7A010000001000000010000000240100000000000078DAA593B14E84401445
+      810DD1624D8050909858DAFB03402B3F4167800A3AB7A4D3ADD492AF102AF713
+      F807426582510B1A8841B3E3DCE22584CC5808C94DEEBC774F32F398618C294C
+      20CFF30E9AA64D90EBBA0726C989D4759DAD280A9B0B35597E1886D3AAAAAEFB
+      BE3F834FD3F47EC9675976378EE309CF6C91458EF8300C0B64745DFF721CE775
+      C992D043061E0CD8BAAEAFF8FA2863FED0116C9EE73B51DFB6ED377E8E3D042F
+      CA70F616E70882E0795EB72CEBBD6DDBF3A2282E2178D4E619303483699A36AA
+      AAFE502F49920770DCDF40F0A8519F67BFF9B7A1F92DF9288A9E963C6A225EB4
+      7FC3303E9BA6B9A0FDC3A326DA3F66209A8D699A1F711C3F42F0B2F9ADFD7F6B
+      EF0FCDA02CCB7FDFDFB5EF4724DFF75FE8FDC2CB72BFA6AACA67
+    }
   end
 end

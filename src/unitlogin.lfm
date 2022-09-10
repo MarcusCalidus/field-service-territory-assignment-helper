@@ -1,0 +1,40 @@
+object FormLogin: TFormLogin
+  Left = 519
+  Height = 113
+  Top = 287
+  Width = 246
+  BorderStyle = bsDialog
+  Caption = 'Login'
+  ClientHeight = 113
+  ClientWidth = 246
+  Position = poScreenCenter
+  LCLVersion = '2.2.2.0'
+  object EditUser: TEdit
+    Left = 16
+    Height = 22
+    Top = 8
+    Width = 216
+    TabOrder = 0
+    TextHint = 'Username'
+  end
+  object EditPassword: TEdit
+    Left = 16
+    Height = 22
+    Top = 36
+    Width = 216
+    EchoMode = emPassword
+    PasswordChar = '*'
+    TabOrder = 1
+    TextHint = 'Password'
+  end
+  object BtnLogin: TBitBtn
+    Left = 85
+    Height = 30
+    Top = 70
+    Width = 75
+    Caption = 'Login'
+    Default = True
+    OnClick = BtnLoginClick
+    TabOrder = 2
+  end
+end

@@ -5,7 +5,7 @@ unit unitData;
 interface
 
 uses
-  Classes, SysUtils, SQLDB, SQLite3Conn, db, contnrs;
+  Classes, SysUtils, SQLDB, SQLite3Conn, db, contnrs, md5, Dialogs;
 
 type
 
@@ -19,6 +19,7 @@ type
     procedure Add(initialValues: TStrings; refreshData: boolean = false);
     procedure Delete(ID: string; refreshData: boolean = false);
     procedure Update(ID: string; newValues: TStrings; refreshData: boolean = false);
+    function FindById(ID: string): T;
     procedure Refresh();
   end;
 
@@ -30,13 +31,34 @@ type
     name: string;
   end;
 
-  TTerritory = class(TObject)
+    TTerritory = class(TObject)
+      constructor Create(fields: TFields); overload;
+    public
+      tableName: string; static;
+      id: string;
+      name: string;
+      description: string;
+    end;
+
+    TPublisher = class(TObject)
+      constructor Create(fields: TFields); overload;
+    public
+      tableName: string; static;
+      id: string;
+      name: string;
+      congregation_id: string;
+    end;
+
+  TUser = class(TObject)
     constructor Create(fields: TFields); overload;
   public
     tableName: string; static;
     id: string;
     name: string;
-    description: string;
+    is_admin: integer;
+    congregation_id: string;
+    pw_hash: string;
+    function checkPassword(pw_to_check: string): boolean;
   end;
 
   { TDataModuleMain }
@@ -49,6 +71,10 @@ type
   public
     congregations: specialize TDataObject<TCongregation>;
     territories: specialize TDataObject<TTerritory>;
+    publishers: specialize TDataObject<TPublisher>;
+    users: specialize TDataObject<TUser>;
+
+    currentUser: TUser;
   end;
 
 var
@@ -67,6 +93,25 @@ begin
   self.name:=fields.FieldByName('name').asString;
 end;
 
+{ TUser }
+
+constructor TUser.Create(fields: TFields);
+begin
+  inherited Create;
+  self.id:=fields.FieldByName('id').AsString;
+  self.name:=fields.FieldByName('name').asString;
+  self.is_admin:=fields.FieldByName('is_admin').AsInteger;
+  self.congregation_id:=fields.FieldByName('congregation_id').asString;
+  self.pw_hash:=fields.FieldByName('pw_hash').asString;
+end;
+
+function TUser.checkPassword(pw_to_check: string): boolean;
+var
+  d: string;
+begin
+  result:=pw_hash = MD5Print(MD5String(pw_to_check));
+end;
+
 { TTerritory }
 
 constructor TTerritory.Create(fields: TFields);
@@ -77,12 +122,24 @@ begin
   self.description:=fields.FieldByName('description').asString;
 end;
 
+{ TPublisher }
+
+constructor TPublisher.Create(fields: TFields);
+begin
+  inherited Create;
+  self.id:=fields.FieldByName('id').AsString;
+  self.name:=fields.FieldByName('name').asString;
+  self.congregation_id:=fields.FieldByName('congregation_id').asString;
+end;
+
 { TDataModuleMain }
 
 procedure TDataModuleMain.DataModuleCreate(Sender: TObject);
 begin
   self.congregations:=specialize TDataObject<TCongregation>.Create;
   self.territories:=specialize TDataObject<TTerritory>.Create;
+  self.publishers:=specialize TDataObject<TPublisher>.Create;
+  self.users:=specialize TDataObject<TUser>.Create;
 end;
 
 { TDataObject }
@@ -100,6 +157,21 @@ destructor TDataObject.Destroy;
 begin
   Query.Free;
   Transaction.Free;
+end;
+
+function TDataObject.FindById(ID: string): T;
+var
+  i: integer;
+begin
+  result:=nil;
+  for i:=0 to Length(Items)-1 do
+  begin
+    if Items[i].id = ID then
+    begin
+       result:=Items[i];
+       break;
+    end;
+  end;
 end;
 
 procedure TDataObject.Add(initialValues: TStrings; refreshData: boolean = false);
@@ -217,5 +289,7 @@ end;
 begin
   TCongregation.tableName:='congregations';
   TTerritory.tableName:='territories';
+  TPublisher.tableName:='publishers';
+  TUser.tableName:='users';
 end.
 

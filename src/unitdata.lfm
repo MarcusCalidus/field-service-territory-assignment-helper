@@ -7,7 +7,7 @@ object DataModuleMain: TDataModuleMain
   Width = 560
   object DBConnection: TSQLite3Connection
     Connected = True
-    LoginPrompt = False
+    LoginPrompt = True
     DatabaseName = '/Users/marcowarm/Documents/git/field-service-territory-assignment-helper/db/fiesta.db'
     KeepConnection = False
     AlwaysUseBigint = False

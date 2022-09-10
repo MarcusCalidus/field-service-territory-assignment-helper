@@ -6,26 +6,35 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls,
-  ExtCtrls, Buttons, ValEdit, unitData;
+  ExtCtrls, Buttons, ValEdit, StdCtrls, unitData;
 
 type
 
   { TFormSettings }
 
   TFormSettings = class(TForm)
+    btnAddUser: TBitBtn;
     btnAddTerritory: TBitBtn;
+    btnDeleteUser: TBitBtn;
     btnDeleteTerritory: TBitBtn;
+    btnRefreshUsers: TBitBtn;
     btnRefreshTerritories: TBitBtn;
     btnSaveCongregation: TBitBtn;
     btnRefreshCongregations: TBitBtn;
     btnAddCongregation: TBitBtn;
     btnDeleteCongregation: TBitBtn;
+    btnSaveCongregation1: TBitBtn;
     btnSaveTerritory: TBitBtn;
     ImageList1: TImageList;
     ListViewCongregations: TListView;
+    Panel4: TPanel;
+    PanelCongregation1: TPanel;
+    PanelUserTitle1: TPanel;
+    v: TListView;
     ListViewTerritories: TListView;
     PageControl1: TPageControl;
     Panel3: TPanel;
+    PanelUserToolbar: TPanel;
     PanelTerritoryTitle: TPanel;
     PanelTerritory: TPanel;
     PanelCongregation: TPanel;
@@ -35,9 +44,11 @@ type
     PanelTerritoryToolbar: TPanel;
     Splitter1: TSplitter;
     Splitter2: TSplitter;
+    TabSheetUsers: TTabSheet;
     TabSheetTerritory: TTabSheet;
     TabSheetCongregation: TTabSheet;
     ValueListEditorCongregation: TValueListEditor;
+    ValueListEditorCongregation1: TValueListEditor;
     ValueListEditorTerritory: TValueListEditor;
     procedure btnAddCongregationClick(Sender: TObject);
     procedure btnAddTerritoryClick(Sender: TObject);
@@ -79,6 +90,7 @@ begin
     li.SubItems.add(DataModuleMain.congregations.Items[i].name);
   end;
 end;
+
 
 procedure TFormSettings.btnRefreshTerritoriesClick(Sender: TObject);
 var

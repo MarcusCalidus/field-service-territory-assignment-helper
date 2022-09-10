@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, ExtCtrls,
-  Buttons, UnitSettings;
+  Buttons, UnitSettings, UnitData;
 
 type
 
@@ -24,6 +24,7 @@ type
     procedure btnShowSettingsClick(Sender: TObject);
     procedure CoolBar1Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure PageControl1Change(Sender: TObject);
   private
 
@@ -43,6 +44,11 @@ implementation
 procedure TFormMain.FormCreate(Sender: TObject);
 begin
 
+end;
+
+procedure TFormMain.FormShow(Sender: TObject);
+begin
+  btnShowSettings.enabled:=DataModuleMain.currentUser.is_admin <> 0;
 end;
 
 procedure TFormMain.PageControl1Change(Sender: TObject);

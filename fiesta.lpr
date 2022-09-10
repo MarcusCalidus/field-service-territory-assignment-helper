@@ -10,7 +10,7 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, unitData, unitMain, unitSettings;
+  Forms, unitData, unitMain, unitSettings, unitLogin, System.UITypes;
 
 {$R *.res}
 
@@ -19,7 +19,11 @@ begin
   Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TDataModuleMain, DataModuleMain);
-  Application.CreateForm(TFormMain, FormMain);
-  Application.Run;
+  FormLogin:=TFormLogin.Create(Application);
+  if FormLogin.ShowModal=mrOK then
+  begin
+    Application.CreateForm(TFormMain, FormMain);
+    Application.Run;
+  end;
 end.
 
