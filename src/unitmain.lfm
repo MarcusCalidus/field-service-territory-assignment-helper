@@ -9,38 +9,24 @@ object FormMain: TFormMain
   OnCreate = FormCreate
   OnShow = FormShow
   LCLVersion = '2.2.2.0'
-  object StatusBar1: TStatusBar
-    Left = 0
-    Height = 18
-    Top = 416
-    Width = 909
-    Panels = <>
-  end
   object PageControl1: TPageControl
     Left = 255
-    Height = 366
+    Height = 402
     Top = 32
     Width = 654
     Align = alClient
-    TabOrder = 1
+    TabOrder = 0
     OnChange = PageControl1Change
-  end
-  object StatusBar2: TStatusBar
-    Left = 0
-    Height = 18
-    Top = 398
-    Width = 909
-    Panels = <>
   end
   object Splitter1: TSplitter
     Left = 250
-    Height = 366
+    Height = 402
     Top = 32
     Width = 5
   end
   object ListView1: TListView
     Left = 0
-    Height = 366
+    Height = 402
     Top = 32
     Width = 250
     Align = alLeft
@@ -52,7 +38,7 @@ object FormMain: TFormMain
       3A00000002000000FFFFFFFFFFFFFFFFFFFFFFFF00000000050000004974656D
       30FFFFFFFFFFFFFFFFFFFFFFFF00000000050000004974656D31
     }
-    TabOrder = 4
+    TabOrder = 2
   end
   object Panel1: TPanel
     Left = 0
@@ -63,7 +49,7 @@ object FormMain: TFormMain
     BevelOuter = bvNone
     ClientHeight = 32
     ClientWidth = 909
-    TabOrder = 5
+    TabOrder = 3
     object btnShowSettings: TBitBtn
       Left = 808
       Height = 30

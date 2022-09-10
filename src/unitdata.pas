@@ -20,7 +20,9 @@ type
     procedure Delete(ID: string; refreshData: boolean = false);
     procedure Update(ID: string; newValues: TStrings; refreshData: boolean = false);
     function FindById(ID: string): T;
+    function FindByName(Name: string): T;
     procedure Refresh();
+    procedure asStrings(Strings: TStrings; addObjects: boolean = false);
   end;
 
   TCongregation = class(TObject)
@@ -74,7 +76,8 @@ type
     publishers: specialize TDataObject<TPublisher>;
     users: specialize TDataObject<TUser>;
 
-    currentUser: TUser;
+    currentUser: string;
+    currentUser_is_admin: integer;
   end;
 
 var
@@ -174,6 +177,21 @@ begin
   end;
 end;
 
+function TDataObject.FindByName(Name: string): T;
+var
+  i: integer;
+begin
+  result:=nil;
+  for i:=0 to Length(Items)-1 do
+  begin
+    if Items[i].Name = Name then
+    begin
+       result:=Items[i];
+       break;
+    end;
+  end;
+end;
+
 procedure TDataObject.Add(initialValues: TStrings; refreshData: boolean = false);
 var
   i: integer;
@@ -182,7 +200,8 @@ var
   uuid: TGuid;
 begin
   CreateGUID(uuid);
-  initialValues.Values['ID']:=GUIDToString(uuid);
+  if initialValues.IndexOfName('ID')<0 then
+     initialValues.Values['ID']:=GUIDToString(uuid);
   for i:=0 to initialValues.Count-1 do
   begin
     names := names + initialValues.Names[i];
@@ -263,6 +282,19 @@ begin
     Items[i].Free;
   end;
   Items:=[];
+end;
+
+procedure TDataObject.asStrings(Strings: TStrings; addObjects: boolean = false);
+var
+  i: integer;
+begin
+  for i:=0 to Length(Items) - 1 do
+  begin
+    if addObjects then
+      Strings.AddObject(Items[i].name, Items[i])
+    else
+      Strings.Add(Items[i].name);
+  end;
 end;
 
 procedure TDataObject.Refresh();

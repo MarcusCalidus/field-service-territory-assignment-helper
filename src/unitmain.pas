@@ -19,8 +19,6 @@ type
     PageControl1: TPageControl;
     Panel1: TPanel;
     Splitter1: TSplitter;
-    StatusBar1: TStatusBar;
-    StatusBar2: TStatusBar;
     procedure btnShowSettingsClick(Sender: TObject);
     procedure CoolBar1Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -48,7 +46,7 @@ end;
 
 procedure TFormMain.FormShow(Sender: TObject);
 begin
-  btnShowSettings.enabled:=DataModuleMain.currentUser.is_admin <> 0;
+  btnShowSettings.enabled:=DataModuleMain.currentUser_is_admin <> 0;
 end;
 
 procedure TFormMain.PageControl1Change(Sender: TObject);

@@ -43,7 +43,8 @@ begin
   if not user.checkPassword(EditPassword.Text) then
     raise Exception.Create('Password invalid for user');
 
-  DataModuleMain.currentUser:=user;
+  DataModuleMain.currentUser:=user.id;
+  DataModuleMain.currentUser_is_admin:=user.is_admin;
   self.ModalResult:=mrOk;
 end;
 

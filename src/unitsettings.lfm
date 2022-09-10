@@ -20,6 +20,7 @@ object FormSettings: TFormSettings
       Caption = 'Users'
       ClientHeight = 419
       ClientWidth = 782
+      OnShow = btnRefreshUsersClick
       object PanelUserToolbar: TPanel
         Left = 0
         Height = 34
@@ -38,7 +39,7 @@ object FormSettings: TFormSettings
           Caption = 'Refresh'
           Images = ImageList1
           ImageIndex = 0
-          OnClick = btnRefreshCongregationsClick
+          OnClick = btnRefreshUsersClick
           TabOrder = 0
         end
         object btnAddUser: TBitBtn
@@ -49,7 +50,7 @@ object FormSettings: TFormSettings
           Caption = 'New'
           Images = ImageList1
           ImageIndex = 1
-          OnClick = btnAddCongregationClick
+          OnClick = btnAddUserClick
           TabOrder = 1
         end
         object btnDeleteUser: TBitBtn
@@ -61,62 +62,50 @@ object FormSettings: TFormSettings
           Enabled = False
           Images = ImageList1
           ImageIndex = 2
-          OnClick = btnDeleteCongregationClick
+          OnClick = btnDeleteUserClick
           TabOrder = 2
         end
       end
-      object v: TListView
+      object ListViewUsers: TListView
         Left = 0
         Height = 385
         Top = 34
-        Width = 502
+        Width = 497
         Align = alClient
         Columns = <        
           item
             Caption = 'ID'
           end        
           item
-            AutoSize = True
             Caption = 'Name'
+            Width = 150
+          end        
+          item
+            Caption = 'is_admin'
+            Width = 80
+          end        
+          item
+            AutoSize = True
+            Caption = 'congregation'
             Width = 100
           end>
         SortColumn = 1
         SortType = stText
         TabOrder = 1
         OnEditing = ListViewCongregationsEditing
-        OnSelectItem = ListViewCongregationsSelectItem
+        OnSelectItem = ListViewUsersSelectItem
       end
-      object PanelCongregation1: TPanel
+      object PanelUser: TPanel
         Left = 502
         Height = 385
         Top = 34
         Width = 280
         Align = alRight
         BevelOuter = bvNone
-        Caption = 'PanelCo'
+        Caption = ' '
         ClientHeight = 385
         ClientWidth = 280
-        Enabled = False
         TabOrder = 2
-        object ValueListEditorCongregation1: TValueListEditor
-          Left = 0
-          Height = 327
-          Top = 26
-          Width = 280
-          Align = alClient
-          FixedCols = 0
-          RowCount = 2
-          TabOrder = 0
-          TitleStyle = tsNative
-          TitleCaptions.Strings = (
-            'Field'
-            'Value'
-          )
-          ColWidths = (
-            64
-            214
-          )
-        end
         object Panel4: TPanel
           Left = 0
           Height = 32
@@ -126,8 +115,8 @@ object FormSettings: TFormSettings
           BevelOuter = bvNone
           ClientHeight = 32
           ClientWidth = 280
-          TabOrder = 1
-          object btnSaveCongregation1: TBitBtn
+          TabOrder = 0
+          object btnSaveUser: TBitBtn
             Left = 176
             Height = 30
             Top = 0
@@ -136,20 +125,78 @@ object FormSettings: TFormSettings
             Caption = 'Save'
             Images = ImageList1
             ImageIndex = 3
-            OnClick = btnSaveCongregationClick
+            OnClick = btnSaveUserClick
             TabOrder = 0
           end
         end
-        object PanelUserTitle1: TPanel
-          Left = 0
-          Height = 26
-          Top = 0
-          Width = 280
-          Align = alTop
-          BevelOuter = bvNone
-          Caption = 'No Congregation Selected'
-          TabOrder = 2
+        object EditUserId: TEdit
+          Left = 13
+          Height = 22
+          Top = 20
+          Width = 251
+          Anchors = [akTop, akLeft, akRight]
+          Enabled = False
+          TabOrder = 1
+          TextHint = 'UserId'
         end
+        object EditUserName: TEdit
+          Left = 13
+          Height = 22
+          Top = 48
+          Width = 251
+          Anchors = [akTop, akLeft, akRight]
+          TabOrder = 2
+          TextHint = 'Name'
+        end
+        object CheckBoxUserIsAdmin: TCheckBox
+          Left = 16
+          Height = 18
+          Top = 81
+          Width = 105
+          Caption = 'User is Admin'
+          TabOrder = 3
+        end
+        object ComboBoxUserCongregation: TComboBox
+          Left = 16
+          Height = 20
+          Top = 112
+          Width = 248
+          Anchors = [akTop, akLeft, akRight]
+          ItemHeight = 26
+          Sorted = True
+          Style = csDropDownList
+          TabOrder = 4
+          Text = '0'
+          TextHint = 'Congregation'
+        end
+        object EditUserPassword: TEdit
+          Left = 16
+          Height = 22
+          Top = 184
+          Width = 248
+          EchoMode = emPassword
+          Enabled = False
+          PasswordChar = '*'
+          TabOrder = 5
+          TextHint = 'Password'
+        end
+        object CheckBoxUpdateUserPW: TCheckBox
+          Left = 18
+          Height = 18
+          Top = 161
+          Width = 123
+          Caption = 'update password'
+          OnChange = CheckBoxUpdateUserPWChange
+          TabOrder = 6
+        end
+      end
+      object Splitter3: TSplitter
+        Left = 497
+        Height = 385
+        Top = 34
+        Width = 5
+        Align = alRight
+        ResizeAnchor = akRight
       end
     end
     object TabSheetCongregation: TTabSheet
@@ -364,7 +411,7 @@ object FormSettings: TFormSettings
           item
             AutoSize = True
             Caption = 'Description'
-            Width = 279
+            Width = 100
           end>
         SortColumn = 1
         SortType = stText
