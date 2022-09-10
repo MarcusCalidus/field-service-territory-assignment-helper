@@ -1,7 +1,7 @@
 object FormSettings: TFormSettings
-  Left = 240
+  Left = 324
   Height = 449
-  Top = 170
+  Top = 157
   Width = 788
   Caption = 'Settings'
   ClientHeight = 449
@@ -12,19 +12,20 @@ object FormSettings: TFormSettings
     Height = 449
     Top = 0
     Width = 788
-    ActivePage = TabSheetCongregation
+    ActivePage = TabSheetTerritory
     Align = alClient
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 0
     object TabSheetCongregation: TTabSheet
       Caption = 'Congregations'
       ClientHeight = 419
       ClientWidth = 782
+      OnShow = btnRefreshCongregationsClick
       object ListViewCongregations: TListView
         Left = 0
-        Height = 377
-        Top = 42
-        Width = 582
+        Height = 385
+        Top = 34
+        Width = 497
         Align = alClient
         Columns = <        
           item
@@ -33,43 +34,306 @@ object FormSettings: TFormSettings
           item
             AutoSize = True
             Caption = 'Name'
+            Width = 100
           end>
+        SortColumn = 1
+        SortType = stText
         TabOrder = 0
+        OnEditing = ListViewCongregationsEditing
         OnSelectItem = ListViewCongregationsSelectItem
       end
-      object PanelCongregation: TPanel
+      object PanelCongregationToolbar: TPanel
         Left = 0
-        Height = 42
+        Height = 34
         Top = 0
         Width = 782
         Align = alTop
-        Caption = 'PanelCongregation'
-        ClientHeight = 42
+        BevelOuter = bvNone
+        ClientHeight = 34
         ClientWidth = 782
         TabOrder = 1
         object btnRefreshCongregations: TBitBtn
-          Left = 8
+          Left = 0
           Height = 30
           Top = 2
-          Width = 75
+          Width = 104
           Caption = 'Refresh'
+          Images = ImageList1
+          ImageIndex = 0
           OnClick = btnRefreshCongregationsClick
           TabOrder = 0
         end
+        object btnAddCongregation: TBitBtn
+          Left = 104
+          Height = 30
+          Top = 2
+          Width = 104
+          Caption = 'New'
+          Images = ImageList1
+          ImageIndex = 1
+          OnClick = btnAddCongregationClick
+          TabOrder = 1
+        end
+        object btnDeleteCongregation: TBitBtn
+          Left = 208
+          Height = 30
+          Top = 2
+          Width = 104
+          Caption = 'Delete'
+          Enabled = False
+          Images = ImageList1
+          ImageIndex = 2
+          OnClick = btnDeleteCongregationClick
+          TabOrder = 2
+        end
       end
-      object ValueListEditorCongregation: TValueListEditor
-        Left = 582
-        Height = 377
-        Top = 42
-        Width = 200
+      object PanelCongregation: TPanel
+        Left = 502
+        Height = 385
+        Top = 34
+        Width = 280
         Align = alRight
-        RowCount = 2
+        BevelOuter = bvNone
+        Caption = 'PanelCo'
+        ClientHeight = 385
+        ClientWidth = 280
+        Enabled = False
         TabOrder = 2
-        ColWidths = (
-          64
-          134
-        )
+        object ValueListEditorCongregation: TValueListEditor
+          Left = 0
+          Height = 327
+          Top = 26
+          Width = 280
+          Align = alClient
+          FixedCols = 0
+          RowCount = 2
+          TabOrder = 0
+          TitleStyle = tsNative
+          TitleCaptions.Strings = (
+            'Field'
+            'Value'
+          )
+          ColWidths = (
+            64
+            214
+          )
+        end
+        object Panel2: TPanel
+          Left = 0
+          Height = 32
+          Top = 353
+          Width = 280
+          Align = alBottom
+          BevelOuter = bvNone
+          ClientHeight = 32
+          ClientWidth = 280
+          TabOrder = 1
+          object btnSaveCongregation: TBitBtn
+            Left = 176
+            Height = 30
+            Top = 0
+            Width = 100
+            Anchors = [akTop, akRight]
+            Caption = 'Save'
+            Images = ImageList1
+            ImageIndex = 3
+            OnClick = btnSaveCongregationClick
+            TabOrder = 0
+          end
+        end
+        object PanelCongregationTitle: TPanel
+          Left = 0
+          Height = 26
+          Top = 0
+          Width = 280
+          Align = alTop
+          BevelOuter = bvNone
+          Caption = 'No Congregation Selected'
+          TabOrder = 2
+        end
+      end
+      object Splitter1: TSplitter
+        Left = 497
+        Height = 385
+        Top = 34
+        Width = 5
+        Align = alRight
+        ResizeAnchor = akRight
       end
     end
+    object TabSheetTerritory: TTabSheet
+      Caption = 'Territories'
+      ClientHeight = 419
+      ClientWidth = 782
+      OnShow = btnRefreshTerritoriesClick
+      object PanelTerritoryToolbar: TPanel
+        Left = 0
+        Height = 34
+        Top = 0
+        Width = 782
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 34
+        ClientWidth = 782
+        TabOrder = 0
+        object btnRefreshTerritories: TBitBtn
+          Left = 0
+          Height = 30
+          Top = 2
+          Width = 104
+          Caption = 'Refresh'
+          Images = ImageList1
+          ImageIndex = 0
+          OnClick = btnRefreshTerritoriesClick
+          TabOrder = 0
+        end
+        object btnAddTerritory: TBitBtn
+          Left = 104
+          Height = 30
+          Top = 2
+          Width = 104
+          Caption = 'New'
+          Images = ImageList1
+          ImageIndex = 1
+          OnClick = btnAddTerritoryClick
+          TabOrder = 1
+        end
+        object btnDeleteTerritory: TBitBtn
+          Left = 208
+          Height = 30
+          Top = 2
+          Width = 104
+          Caption = 'Delete'
+          Enabled = False
+          Images = ImageList1
+          ImageIndex = 2
+          OnClick = btnDeleteTerritoryClick
+          TabOrder = 2
+        end
+      end
+      object ListViewTerritories: TListView
+        Left = 0
+        Height = 385
+        Top = 34
+        Width = 443
+        Align = alClient
+        Columns = <        
+          item
+            Caption = 'ID'
+          end        
+          item
+            Caption = 'Name'
+            Width = 100
+          end        
+          item
+            AutoSize = True
+            Caption = 'Description'
+          end>
+        SortColumn = 1
+        SortType = stText
+        TabOrder = 1
+        OnEditing = ListViewCongregationsEditing
+        OnSelectItem = ListViewTerritoriesSelectItem
+      end
+      object PanelTerritory: TPanel
+        Left = 448
+        Height = 385
+        Top = 34
+        Width = 334
+        Align = alRight
+        BevelOuter = bvNone
+        ClientHeight = 385
+        ClientWidth = 334
+        Enabled = False
+        TabOrder = 2
+        object ValueListEditorTerritory: TValueListEditor
+          Left = 0
+          Height = 327
+          Top = 26
+          Width = 334
+          Align = alClient
+          FixedCols = 0
+          RowCount = 2
+          TabOrder = 0
+          TitleStyle = tsNative
+          TitleCaptions.Strings = (
+            'Field'
+            'Value'
+          )
+          ColWidths = (
+            64
+            268
+          )
+        end
+        object Panel3: TPanel
+          Left = 0
+          Height = 32
+          Top = 353
+          Width = 334
+          Align = alBottom
+          BevelOuter = bvNone
+          ClientHeight = 32
+          ClientWidth = 334
+          TabOrder = 1
+          object btnSaveTerritory: TBitBtn
+            Left = 230
+            Height = 30
+            Top = 0
+            Width = 100
+            Anchors = [akTop, akRight]
+            Caption = 'Save'
+            Images = ImageList1
+            ImageIndex = 3
+            OnClick = btnSaveTerritoryClick
+            TabOrder = 0
+          end
+        end
+        object PanelTerritoryTitle: TPanel
+          Left = 0
+          Height = 26
+          Top = 0
+          Width = 334
+          Align = alTop
+          BevelOuter = bvNone
+          Caption = 'No Territory Selected'
+          TabOrder = 2
+        end
+      end
+      object Splitter2: TSplitter
+        Left = 443
+        Height = 385
+        Top = 34
+        Width = 5
+        Align = alRight
+        ResizeAnchor = akRight
+      end
+    end
+  end
+  object ImageList1: TImageList
+    Left = 270
+    Top = 146
+    Bitmap = {
+      4C7A050000001000000010000000700200000000000078DAFBFFFF3FC37F02D8
+      D0D0F084B6B6F6B9A74F9F8AFE27423D3A06E9656060F8AFA5A575E9E5CB9722
+      A4EA07D9ABA6A676196AC645A019C2E86A366EDCE8E9E8E8B88B8383E333481D
+      3E0CF4CF7164BD393939DD84F4E0D23F6BD6AC7890182B2BEB8FB6B6B692E7CF
+      9F8B90E27E5959D97B20719039E4849F8181C109203EF9F7EF5F466AC4DFB367
+      CF38806A83807A0270A9F9F3E70F23480DD05E143540B77100DD1802746B1A48
+      1E97FEE9D3A7AB83D400FD1E81A4971DA83718240E0CAB10A05B39D0F501C396
+      A3B5B5550F18D6C92075B367CF5643F2A33F488C589C9B9B6B8E164604F503D3
+      5622308D7901D39A2CBADB88713F214C6CF8511A7FF4C20B162C50066172F4DE
+      BF7F9F0716EE2036A9FA6FDFBECD07D30F620F57FD070E1C10E7E2E24A2425ED
+      8330272767E2FEFDFBC541985CFD20BB477AF8D32AFD82F0C2850B954178A0F3
+      F1281EBC98D2FC4BABFC3F8A4706DEBE7DBB94BCBC7C383169868D8D2DA9A8A8
+      C80CD85685EB171111892135EDF9F9F9B97EFDFA9519A41F26B668D122BCE5E4
+      BF7FFF18A2A2A21C60EACDCCCCFC41ED2D187FDBB66DB284FC0A6C335A21BB03
+      D4FEA5443F3226D5FD4300AF05E2AF50BC9644BD4D58FA5D4D74D44FB4FB4545
+      4563C80D23905E52F20F3206E901E91DE9E58FB7B7B70B2323638A8E8E4EE0EE
+      DDBB09D6472035BABABA814C4C4C2920BDAEAEAE6E48E19A1A131363FBEAD52B
+      36747D2031901C480D4C3D482F285FCE9933475948482816260E6283C4407278
+      E4554072F8CCB7B5B5F5026162DC87EC3F15159510F4F402140B25367C406AB1
+      E80FC1A79F5CF743C3470557F8E09107872FA5F1E7E3E3E3024A0BE4A69FA19E
+      7F008675BF9B
+    }
   end
 end

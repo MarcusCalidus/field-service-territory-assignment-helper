@@ -10,23 +10,8 @@ object DataModuleMain: TDataModuleMain
     LoginPrompt = False
     DatabaseName = '/Users/marcowarm/Documents/git/field-service-territory-assignment-helper/db/fiesta.db'
     KeepConnection = False
-    Transaction = SQLTransaction1
     AlwaysUseBigint = False
     Left = 40
     Top = 24
-  end
-  object SQLQuery1: TSQLQuery
-    FieldDefs = <>
-    Params = <>
-    Macros = <>
-    Left = 150
-    Top = 69
-  end
-  object SQLTransaction1: TSQLTransaction
-    Active = False
-    Action = caCommit
-    Database = DBConnection
-    Left = 40
-    Top = 96
   end
 end
