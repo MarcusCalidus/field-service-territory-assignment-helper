@@ -1,0 +1,75 @@
+object FormSettings: TFormSettings
+  Left = 240
+  Height = 449
+  Top = 170
+  Width = 788
+  Caption = 'Settings'
+  ClientHeight = 449
+  ClientWidth = 788
+  LCLVersion = '2.2.2.0'
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 449
+    Top = 0
+    Width = 788
+    ActivePage = TabSheetCongregation
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 0
+    object TabSheetCongregation: TTabSheet
+      Caption = 'Congregations'
+      ClientHeight = 419
+      ClientWidth = 782
+      object ListViewCongregations: TListView
+        Left = 0
+        Height = 377
+        Top = 42
+        Width = 582
+        Align = alClient
+        Columns = <        
+          item
+            Caption = 'ID'
+          end        
+          item
+            AutoSize = True
+            Caption = 'Name'
+          end>
+        TabOrder = 0
+        OnSelectItem = ListViewCongregationsSelectItem
+      end
+      object PanelCongregation: TPanel
+        Left = 0
+        Height = 42
+        Top = 0
+        Width = 782
+        Align = alTop
+        Caption = 'PanelCongregation'
+        ClientHeight = 42
+        ClientWidth = 782
+        TabOrder = 1
+        object btnRefreshCongregations: TBitBtn
+          Left = 8
+          Height = 30
+          Top = 2
+          Width = 75
+          Caption = 'Refresh'
+          OnClick = btnRefreshCongregationsClick
+          TabOrder = 0
+        end
+      end
+      object ValueListEditorCongregation: TValueListEditor
+        Left = 582
+        Height = 377
+        Top = 42
+        Width = 200
+        Align = alRight
+        RowCount = 2
+        TabOrder = 2
+        ColWidths = (
+          64
+          134
+        )
+      end
+    end
+  end
+end

@@ -5,21 +5,23 @@ unit unitMain;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, ExtCtrls;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, ExtCtrls,
+  Buttons, UnitSettings;
 
 type
 
   { TFormMain }
 
   TFormMain = class(TForm)
+    btnShowSettings: TBitBtn;
     ImageList1: TImageList;
     ListView1: TListView;
     PageControl1: TPageControl;
+    Panel1: TPanel;
     Splitter1: TSplitter;
     StatusBar1: TStatusBar;
     StatusBar2: TStatusBar;
-    ToolBar1: TToolBar;
-    ToolButton1: TToolButton;
+    procedure btnShowSettingsClick(Sender: TObject);
     procedure CoolBar1Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure PageControl1Change(Sender: TObject);
@@ -51,6 +53,15 @@ end;
 procedure TFormMain.CoolBar1Change(Sender: TObject);
 begin
 
+end;
+
+procedure TFormMain.btnShowSettingsClick(Sender: TObject);
+var
+  formSettings: TFormSettings;
+begin
+  formSettings:=TFormSettings.Create(self);
+  formSettings.ShowModal;
+  formSettings.Free;
 end;
 
 end.

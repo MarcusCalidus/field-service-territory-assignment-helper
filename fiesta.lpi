@@ -37,7 +37,7 @@
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="unitmain.pas"/>
+        <Filename Value="src/unitmain.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormMain"/>
         <HasResources Value="True"/>
@@ -45,12 +45,19 @@
         <UnitName Value="unitMain"/>
       </Unit>
       <Unit>
-        <Filename Value="unitdata.pas"/>
+        <Filename Value="src/unitdata.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="DataModule1"/>
+        <ComponentName Value="DataModuleMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="unitData"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src/unitsettings.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormSettings"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="unitSettings"/>
       </Unit>
     </Units>
   </ProjectOptions>
@@ -61,6 +68,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="src"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Linking>

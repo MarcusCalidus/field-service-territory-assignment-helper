@@ -1,7 +1,7 @@
 object FormMain: TFormMain
-  Left = 470
+  Left = 274
   Height = 434
-  Top = 377
+  Top = 154
   Width = 909
   Caption = 'FIESTA - FIEld Service Territory Assignment helper'
   ClientHeight = 434
@@ -15,26 +15,13 @@ object FormMain: TFormMain
     Width = 909
     Panels = <>
   end
-  object ToolBar1: TToolBar
-    Left = 0
-    Height = 26
-    Top = 0
-    Width = 909
-    Caption = 'ToolBar1'
-    TabOrder = 1
-    object ToolButton1: TToolButton
-      Left = 1
-      Top = 2
-      Caption = 'ToolButton1'
-    end
-  end
   object PageControl1: TPageControl
     Left = 255
-    Height = 372
-    Top = 26
+    Height = 348
+    Top = 50
     Width = 654
     Align = alClient
-    TabOrder = 2
+    TabOrder = 1
     OnChange = PageControl1Change
   end
   object StatusBar2: TStatusBar
@@ -46,14 +33,14 @@ object FormMain: TFormMain
   end
   object Splitter1: TSplitter
     Left = 250
-    Height = 372
-    Top = 26
+    Height = 348
+    Top = 50
     Width = 5
   end
   object ListView1: TListView
     Left = 0
-    Height = 372
-    Top = 26
+    Height = 348
+    Top = 50
     Width = 250
     Align = alLeft
     Columns = <    
@@ -64,7 +51,27 @@ object FormMain: TFormMain
       3A00000002000000FFFFFFFFFFFFFFFFFFFFFFFF00000000050000004974656D
       30FFFFFFFFFFFFFFFFFFFFFFFF00000000050000004974656D31
     }
+    TabOrder = 4
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 50
+    Top = 0
+    Width = 909
+    Align = alTop
+    Caption = 'Panel1'
+    ClientHeight = 50
+    ClientWidth = 909
     TabOrder = 5
+    object btnShowSettings: TBitBtn
+      Left = 16
+      Height = 30
+      Top = 8
+      Width = 75
+      Caption = 'Settings'
+      OnClick = btnShowSettingsClick
+      TabOrder = 0
+    end
   end
   object ImageList1: TImageList
     Left = 73
